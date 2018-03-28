@@ -1,3 +1,16 @@
+function Pizza(pizzaSize, baseOption, cheeseOption, meatOptions, vegOptions) {
+  this.pizzaSize = pizzaSize;
+  this.baseOption = baseOption;
+  this.cheeseOption = cheeseOption;
+  this.meatOptions = meatOptions;
+  this.vegOptions = vegOptions;
+}
+
+Pizza.prototype.showResults = function() {
+  return this.pizzaSize + ', ' + this.baseOption + ', ' + this.cheeseOption + ', ' + this.meatOptions + ', ' + this.vegOptions;
+};
+
+
 $(document).ready(function() {
   // $('#pizzaSize option').attr('selected', 'selected');
   $('#form').submit(function(event) {
@@ -20,5 +33,7 @@ $(document).ready(function() {
     });
     console.log(vegOptions);
 
+    var newPizza = new Pizza(pizzaSize, baseOption, cheeseOption, meatOptions, vegOptions);
+    $('#showPizza').text(newPizza.showResults()).toString();
   });
 });
