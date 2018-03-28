@@ -51,12 +51,11 @@
                     <div class="size-picker-container option-container">
                       <h4 class="option-header">Choose your size</h4>
                       <div class="size-options-container">
-                        <select class="size-options" name="size">
-                          <option value="" disabled selected>🍕🍕🍕</option>
-                          <option value="sm">Small</option>
-                          <option value="md">Medium</option>
-                          <option value="lg">Large</option>
-                          <option value="xl">X-Large</option>
+                        <select class="size-options" name="size" id="pizzaSize">
+                          <option value="1">Small</option>
+                          <option value="2">Medium</option>
+                          <option value="3">Large</option>
+                          <option value="4">X-Large</option>
                         </select>
                       </div>
 
@@ -74,9 +73,11 @@
                           <li><label for="none-sauce">none</label>
                           <input type="radio" name="sauce" value="none-sauce"></li>
                           <li><label for="marinara-sauce">marinara</label>
-                          <input type="radio" name="sauce" value="marinara-sauce"></li>
+                          <input checked type="radio" name="sauce" value="marinara-sauce"></li>
                           <li><label for="alfredo-sauce">alfredo</label>
                           <input type="radio" name="sauce" value="alfredo-sauce"></li>
+                          <li><label for="pesto-sauce">pesto</label>
+                          <input type="radio" name="sauce" value="pesto-sauce"></li>
                         </ul>
                       </div>
 
@@ -92,7 +93,7 @@
                       <div class="topping-options-container">
                         <ul>
                           <li><label for="none-cheese">none</label>
-                          <input type="radio" name="cheese" value="none-cheese"></li>
+                          <input checked type="radio" name="cheese" value="none-cheese"></li>
                           <li><label for="reg-cheese">Regular</label>
                           <input type="radio" name="cheese" value="reg-cheese"></li>
                           <li><label for="x-cheese">Pile it on</label>
@@ -112,7 +113,7 @@
                       <div class="topping-options-container">
                         <ul>
                           <li><label for="none-meat">none</label>
-                          <input type="checkbox" name="topping-meat" value="none-meat"></li>
+                          <input checked type="checkbox" name="topping-meat" value="none-meat"></li>
                           <li><label for="pepperoni">pepperoni</label>
                           <input type="checkbox" name="topping-meat" value="pepperoni"></li>
                           <li><label for="italian-sausage">Italian Sausage</label>
@@ -144,7 +145,7 @@
                       <div class="topping-options-container">
                         <ul>
                           <li><label for="none-veg">none</label>
-                          <input type="checkbox" name="topping-veg" value="none-veg"></li>
+                          <input checked type="checkbox" name="topping-veg" value="none-veg"></li>
                           <li><label for="mushrooms">Mushrooms</label>
                           <input type="checkbox" name="topping-veg" value="mushrooms"></li>
                           <li><label for="roasted-spinach">Roasted Spinach</label>
