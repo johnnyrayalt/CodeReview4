@@ -22,10 +22,25 @@ const Prices = {
 }
 
 
+const Results = {
+  "small":"small",
+  "medium":"medium",
+  "large":"large",
+  "extraLarge":"extra large"
+}
+
 
 Pizza.prototype.showResults = function() {
   return this.pizzaSize + ', ' + this.sauceOption + ', ' + this.cheeseOption + ', ' + this.meatOptions + ', ' + this.vegOptions;
 };
+
+Pizza.prototype.pizzaSizeResult = function() {
+  var x = document.getElementById('pizzaSize').selectedIndex;
+  if (x = 0) {
+    console.log(x);
+    return x;
+  }
+}
 
 Pizza.prototype.addOptions = function() {
   return this.total +
@@ -35,6 +50,10 @@ Pizza.prototype.addOptions = function() {
     (this.meatOptions.length * Prices.meat) +
     (this.vegOptions.length * Prices.veg);
 };
+
+Pizza.prototype.showResults = function() {
+
+}
 
 function sizeMath() {
   // if pizza size dropdown is seleceted to small
@@ -96,8 +115,13 @@ $(document).ready(function() {
     // Creates new Object names Pizza and is stored as newPizza
     var newPizza = new Pizza(pizzaSize, sauceOption, cheeseOption, meatOptions, vegOptions);
 
-    console.log(newPizza.addOptions());
-    // $('#showPizza').text(newPizza.addOptions());
+    console.log(newPizza.pizzaSize.pizzaSizeResult());
+    $('#pizzaSizeResult').text(newPizza.pizzaSize.pizzaSizeResult());
+    $('#sauceOptionResult').text(newPizza.sauceOption);
+    $('#cheeseOptionResult').text(newPizza.cheeseOption);
+    $('#meatOptionsResult').text(newPizza.meatOptions);
+    $('#vegOptionsResult').text(newPizza.vegOptions);
+    $('#totalResult').text(newPizza.addOptions());
   });
 
   // TODO:  toggle checkbox functions

@@ -52,10 +52,10 @@
                       <h4 class="option-header">Choose your size</h4>
                       <div class="size-options-container">
                         <select class="size-options" name="size" id="pizzaSize">
-                          <option id="small" name="size" value="10">Small</option>
-                          <option id="medium" name="size" value="12">Medium</option>
-                          <option id="large" name="size" value="15">Large</option>
-                          <option id="extraLarge" name="size" value="18">X-Large</option>
+                          <option id="small" name="size">Small</option>
+                          <option id="medium" name="size">Medium</option>
+                          <option id="large" name="size">Large</option>
+                          <option id="extraLarge" name="size">X-Large</option>
                         </select>
                       </div>
 
@@ -65,19 +65,19 @@
 
                     </div>
 
-                    <!-- Base Option -->
+                    <!-- Sauce Option -->
                     <div class="size-picker-container option-container">
-                      <h4 class="option-header">Choose your base</h4>
+                      <h4 class="option-header">Choose your Sauce</h4>
                       <div class="topping-options-container">
                         <ul>
-                          <li><label for="none-sauce">none</label>
-                          <input id="none-sauce" type="radio" name="sauce" value="0"></li>
-                          <li><label for="marinara-sauce">marinara</label>
-                          <input id="marinara-sauce" checked type="radio" name="sauce" value="0"></li>
-                          <li><label for="alfredo-sauce">alfredo</label>
-                          <input id="alfredo-sauce" type="radio" name="sauce" value="1"></li>
-                          <li><label for="pesto-sauce">pesto</label>
-                          <input id="pesto-sauce" type="radio" name="sauce" value="1.50"></li>
+                          <li><label for="noneSauce">none</label>
+                          <input id="noneSauce" type="radio" name="sauce"></li>
+                          <li><label for="marinaraSauce">marinara</label>
+                          <input id="marinaraSauce" checked type="radio" name="sauce"></li>
+                          <li><label for="alfredoSauce">alfredo</label>
+                          <input id="alfredoSauce" type="radio" name="sauce"></li>
+                          <li><label for="pestoSauce">pesto</label>
+                          <input id="pestoSauce" type="radio" name="sauce"></li>
                         </ul>
                       </div>
 
@@ -93,11 +93,11 @@
                       <div class="topping-options-container">
                         <ul>
                           <li><label for="noneCheese">none</label>
-                          <input id="noneCheese" type="radio" name="cheese" value="0"></li>
+                          <input id="noneCheese" type="radio" name="cheese"></li>
                           <li><label for="regCheese">Regular</label>
-                          <input id="regCheese" checked type="radio" name="cheese" value="1"></li>
+                          <input id="regCheese" checked type="radio" name="cheese"></li>
                           <li><label for="xCheese">Pile it on</label>
-                          <input id="xCheese" type="radio" name="cheese" value="2"></li>
+                          <input id="xCheese" type="radio" name="cheese"></li>
                         </ul>
                       </div>
 
@@ -177,7 +177,14 @@
                 </form>
 
                 <div class="show-pizza-container">
-                  <p><span id="showPizza"></span></p>
+                  <ul>
+                    <li><span id="pizzaSizeResult"></span></li>
+                    <li><span id="sauceOptionResult"></span></li>
+                    <li><span id="cheeseOptionResult"></span></li>
+                    <li><span id="meatOptionsResult"></span></li>
+                    <li><span id="vegOptionsResult"></span></li>
+                    <li><span id="totalResult"></span></li>
+                  </ul>
                 </div>
 
               </div>
