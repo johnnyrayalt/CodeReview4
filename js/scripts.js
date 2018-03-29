@@ -1,12 +1,19 @@
+<<<<<<< HEAD
 function Pizza(pizzaSize, sauceOption, cheeseOption, meatOptions, vegOptions) {
   this.pizzaSize = pizzaSize;
   this.sauceOption = sauceOption;
+=======
+function Pizza(pizzaSize, baseOption, cheeseOption, meatOptions, vegOptions) {
+  this.pizzaSize = pizzaSize;
+  this.baseOption = baseOption;
+>>>>>>> d93de4bb2c551a56c814f6440028223e018cbbc0
   this.cheeseOption = cheeseOption;
   this.meatOptions = meatOptions;
   this.vegOptions = vegOptions;
   this.total = 0;
 }
 
+<<<<<<< HEAD
 
 // change values here only
 const Prices = {
@@ -130,4 +137,67 @@ $(document).ready(function() {
   //     $('input#none-meat[name=topping-meat-none]').attr('checked', false);
   //   };
   // });
+=======
+const Prices = {
+  "meat":1,
+  "veg":.5,
+  "extraCheese":2,
+  "small":10,
+  "medium":12,
+  "large":15,
+  "extraLarge":18
+}
+
+function noMeat() {
+  console.log("hi");
+  var nope = $('input#none-meat').attr('checked', true);
+  console.log(nope);
+  if(nope = true) {
+    $('input.topping-meat[name=topping-meat]').attr('checked', false);
+  };
+};
+
+Pizza.prototype.showResults = function() {
+  return (this.pizzaSize + ', ' + this.baseOption + ', ' + this.cheeseOption + ', ' + this.meatOptions + ', ' + this.vegOptions).toString();
+};
+
+Pizza.prototype.addOptions = function() {
+
+  if (document.getElementById('input#none-meat').checked) {
+    return this.total;
+  } else {
+    value = Prices.meat;
+    return this.total += (this.meatOptions.length * value);
+  };
+};
+
+
+
+$(document).ready(function() {
+  // $('#pizzaSize option').attr('selected', 'selected');
+  $('#form').submit(function(event) {
+    event.preventDefault();
+
+    var pizzaSize = $('#pizzaSize :selected').val()
+    // console.log(pizzaSize);
+    var baseOption = $('input:radio[name=sauce]:checked').val();
+    // console.log(baseOption);
+    var cheeseOption = $('input:radio[name=cheese]:checked').val();
+    // console.log(cheeseOption);
+    var meatOptions = [];
+    $('input:checkbox[name=topping-meat]:checked').each(function() {
+      meatOptions.push($(this).val());
+    });
+    // console.log(meatOptions);
+    var vegOptions = [];
+    $('input:checkbox[name=topping-veg]:checked').each(function() {
+        vegOptions.push($(this).val());
+    });
+    // console.log(vegOptions);
+
+    var newPizza = new Pizza(pizzaSize, baseOption, cheeseOption, meatOptions, vegOptions);
+    console.log(newPizza.addOptions());
+    $('#showPizza').text(newPizza.showResults());
+  });
+>>>>>>> d93de4bb2c551a56c814f6440028223e018cbbc0
 });
