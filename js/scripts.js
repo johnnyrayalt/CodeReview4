@@ -9,7 +9,8 @@ function Pizza(pizzaSize, baseOption, cheeseOption, meatOptions, vegOptions) {
 
 const Prices = {
   "meat":1,
-  "veg":.5,
+  "veg":0.5,
+  "cheese":1,
   "extraCheese":2,
   "small":10,
   "medium":12,
@@ -20,19 +21,28 @@ const Prices = {
 
 
 Pizza.prototype.showResults = function() {
-  return (this.pizzaSize + ', ' + this.baseOption + ', ' + this.cheeseOption + ', ' + this.meatOptions + ', ' + this.vegOptions).toString();
+  return this.pizzaSize + ', ' + this.baseOption + ', ' + this.cheeseOption + ', ' + this.meatOptions + ', ' + this.vegOptions;
 };
 
 Pizza.prototype.addOptions = function() {
- this.total += (
-   (this.meatOptions.length * Prices.meat) +
-   (this.vegOptions.length * Prices.veg)
- );
-
-
+  return this.total +=
+    (this.meatOptions.length * Prices.meat) +
+    (this.vegOptions.length * Prices.veg) +
+    this.cheeseOption;
 };
 
-
+function cheeseMath() {
+  if (document.getElementById('noneCheese').checked) {
+    var noneCheese = document.getElementById('noneCheese').value;
+    return noneCheese;
+  } else if (document.getElementById('regCheese').checked) {
+    var regCheese = document.getElementById('regCheese').value;
+    return regCheese;
+  } else if (document.getElementById('xCheese').checked) {
+    var xCheese = document.getElementById('xCheese').value;
+    return xCheese;
+  };
+};
 
 $(document).ready(function() {
   $('#form').submit(function(event) {
@@ -40,7 +50,7 @@ $(document).ready(function() {
 
     var pizzaSize = $('#pizzaSize :selected').val()
     var baseOption = $('input:radio[name=sauce]:checked').val();
-    var cheeseOption = $('input:radio[name=cheese]:checked').val();
+    var cheeseOption = parseInt(cheeseMath());
     var meatOptions = [];
     var vegOptions = [];
     $('input:checkbox[name=topping-meat]:checked').each(function() {
@@ -50,12 +60,16 @@ $(document).ready(function() {
       vegOptions.push($(this).val());
     });
 
+
     var newPizza = new Pizza(pizzaSize, baseOption, cheeseOption, meatOptions, vegOptions);
+    //console.log(newPizza.cheeseOption);
+
+
     console.log(newPizza.addOptions());
-    $('#showPizza').text(newPizza.showResults());
+    // $('#showPizza').text(newPizza.addOptions());
   });
 
- // TODO:  toggle checkbox functions
+  // TODO:  toggle checkbox functions
   // $('input.topping-meat').click(function()  {
   //   if($('input[name=topping-meat]').attr('checked', true)) {
   //     $('input#none-meat[name=topping-meat-none]').attr('checked', false);
