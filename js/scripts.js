@@ -8,13 +8,12 @@ function Pizza(pizzaSize, sauceOption, cheeseOption, meatOptions, vegOptions) {
 }
 
 const Prices = {
-  "meat":1,
-  "veg":0.5,
-  "extraCheese":2,
   "small":10,
   "medium":12,
   "large":15,
   "extraLarge":18,
+  "meat":1,
+  "veg":0.5,
   "standard":1,
   "extra":0.5,
   "none":0
@@ -27,21 +26,24 @@ Pizza.prototype.showResults = function() {
 };
 
 Pizza.prototype.addOptions = function() {
-  return this.total +=
-    (this.meatOptions.length * Prices.meat) +
-    (this.vegOptions.length * Prices.veg) +
+  return this.total +
+    this.pizzaSize +
+    this.sauceOption +
     this.cheeseOption +
-    this.sauceOption;
+    (this.meatOptions.length * Prices.meat) +
+    (this.vegOptions.length * Prices.veg);
 };
 
-function cheeseMath() {
-  if (document.getElementById('noneCheese').checked) {
-    return Prices.none;
-  } else if (document.getElementById('regCheese').checked) {
-    return Prices.standard;
-  } else if (document.getElementById('xCheese').checked) {
-    return Prices.extraCheese;
-  };
+function sizeMath() {
+  if (document.getElementById('small').selected) {
+    return Prices.small;
+  } else if (document.getElementById('medium').selected) {
+    return Prices.medium;
+  } else if (document.getElementById('large').selected) {
+    return Prices.large;
+  } else if (document.getElementById('extraLarge').selected) {
+    return Prices.extraLarge;
+  }
 };
 
 function sauceMath() {
@@ -51,16 +53,26 @@ function sauceMath() {
     return Prices.standard;
   } else if (document.getElementById('alfredoSauce').checked) {
     return Prices.standard + Prices.extra;
-  } else if (document.getElementById('pestoSauced').checked) {
+  } else if (document.getElementById('pestoSauce').checked) {
     return (2 * Prices.standard);
   }
+};
+
+function cheeseMath() {
+  if (document.getElementById('noneCheese').checked) {
+    return Prices.none;
+  } else if (document.getElementById('regCheese').checked) {
+    return Prices.standard;
+  } else if (document.getElementById('xCheese').checked) {
+    return (2 * Prices.standard);
+  };
 };
 
 $(document).ready(function() {
   $('#form').submit(function(event) {
     event.preventDefault();
 
-    var pizzaSize = $('#pizzaSize :selected').val()
+    var pizzaSize = parseInt(sizeMath());
     var sauceOption = parseInt(sauceMath());
     var cheeseOption = parseInt(cheeseMath());
     var meatOptions = [];
