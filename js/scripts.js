@@ -1,6 +1,6 @@
-function Pizza(pizzaSize, baseOption, cheeseOption, meatOptions, vegOptions) {
+function Pizza(pizzaSize, sauceOption, cheeseOption, meatOptions, vegOptions) {
   this.pizzaSize = pizzaSize;
-  this.baseOption = baseOption;
+  this.sauceOption = sauceOption;
   this.cheeseOption = cheeseOption;
   this.meatOptions = meatOptions;
   this.vegOptions = vegOptions;
@@ -10,38 +10,50 @@ function Pizza(pizzaSize, baseOption, cheeseOption, meatOptions, vegOptions) {
 const Prices = {
   "meat":1,
   "veg":0.5,
-  "cheese":1,
   "extraCheese":2,
   "small":10,
   "medium":12,
   "large":15,
-  "extraLarge":18
+  "extraLarge":18,
+  "standard":1,
+  "extra":0.5,
+  "none":0
 }
 
 
 
 Pizza.prototype.showResults = function() {
-  return this.pizzaSize + ', ' + this.baseOption + ', ' + this.cheeseOption + ', ' + this.meatOptions + ', ' + this.vegOptions;
+  return this.pizzaSize + ', ' + this.sauceOption + ', ' + this.cheeseOption + ', ' + this.meatOptions + ', ' + this.vegOptions;
 };
 
 Pizza.prototype.addOptions = function() {
   return this.total +=
     (this.meatOptions.length * Prices.meat) +
     (this.vegOptions.length * Prices.veg) +
-    this.cheeseOption;
+    this.cheeseOption +
+    this.sauceOption;
 };
 
 function cheeseMath() {
   if (document.getElementById('noneCheese').checked) {
-    var noneCheese = document.getElementById('noneCheese').value;
-    return noneCheese;
+    return Prices.none;
   } else if (document.getElementById('regCheese').checked) {
-    var regCheese = document.getElementById('regCheese').value;
-    return regCheese;
+    return Prices.standard;
   } else if (document.getElementById('xCheese').checked) {
-    var xCheese = document.getElementById('xCheese').value;
-    return xCheese;
+    return Prices.extraCheese;
   };
+};
+
+function sauceMath() {
+  if (document.getElementById('noneSauce').checked) {
+    return Prices.none;
+  } else if (document.getElementById('marinaraSauce').checked) {
+    return Prices.standard;
+  } else if (document.getElementById('alfredoSauce').checked) {
+    return Prices.standard + Prices.extra;
+  } else if (document.getElementById('pestoSauced').checked) {
+    return (2 * Prices.standard);
+  }
 };
 
 $(document).ready(function() {
@@ -49,7 +61,7 @@ $(document).ready(function() {
     event.preventDefault();
 
     var pizzaSize = $('#pizzaSize :selected').val()
-    var baseOption = $('input:radio[name=sauce]:checked').val();
+    var sauceOption = parseInt(sauceMath());
     var cheeseOption = parseInt(cheeseMath());
     var meatOptions = [];
     var vegOptions = [];
@@ -61,7 +73,7 @@ $(document).ready(function() {
     });
 
 
-    var newPizza = new Pizza(pizzaSize, baseOption, cheeseOption, meatOptions, vegOptions);
+    var newPizza = new Pizza(pizzaSize, sauceOption, cheeseOption, meatOptions, vegOptions);
     //console.log(newPizza.cheeseOption);
 
 
