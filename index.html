@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pizza App</title>
+    <!-- BOOTSTRAP 4.0.0 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- CUSTOM STYLESHEET -->
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    <!-- JQUERY 3.1.1 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <!-- CUSTOM JAVASCRIPT -->
+    <script src="js/scripts.js"></script>
+  </head>
+  <body>
+    <div class="container">
+
+      <header class="row">
+        <h1 class="col-12">Pizza Topping Picker</h1>
+      </header>
+
+      <div class="row">
+
+        <div class="col-3">
+          <div class="info-container">
+            <h4 class="padding-bottom">
+              About Piza Topping Picker
+            </h4>
+            <p class="padding-bottom">
+              created by<br />
+              Johnny Ray Alt
+            </p>
+            <p>
+              Submitted for review #DATE#
+            </p>
+          </div>
+        </div>
+
+        <!-- APP CONTAINER -->
+        <div class="col-9">
+
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <h1>Put it on the pizza</h1>
+
+                <form class="form" id="form">
+                  <div class="pizza-options-container">
+
+                    <!-- Size Option -->
+                    <div class="size-picker-container option-container">
+                      <h4 class="option-header">Choose your size</h4>
+                      <div class="size-options-container">
+                        <select class="size-options" name="size" id="pizzaSize">
+                          <option id="small" name="size" value="10">Small</option>
+                          <option id="medium" name="size" value="12">Medium</option>
+                          <option id="large" name="size" value="15">Large</option>
+                          <option id="extraLarge" name="size" value="18">X-Large</option>
+                        </select>
+                      </div>
+
+                      <div class="next-button">
+                        <button type="button" name="next-button">Next</button>
+                      </div>
+
+                    </div>
+
+                    <!-- Base Option -->
+                    <div class="size-picker-container option-container">
+                      <h4 class="option-header">Choose your base</h4>
+                      <div class="topping-options-container">
+                        <ul>
+                          <li><label for="none-sauce">none</label>
+                          <input id="none-sauce" type="radio" name="sauce" value="0"></li>
+                          <li><label for="marinara-sauce">marinara</label>
+                          <input id="marinara-sauce" checked type="radio" name="sauce" value="0"></li>
+                          <li><label for="alfredo-sauce">alfredo</label>
+                          <input id="alfredo-sauce" type="radio" name="sauce" value="1"></li>
+                          <li><label for="pesto-sauce">pesto</label>
+                          <input id="pesto-sauce" type="radio" name="sauce" value="1.50"></li>
+                        </ul>
+                      </div>
+
+                      <div class="next-button">
+                        <button type="button" name="next-button">Next</button>
+                      </div>
+
+                    </div>
+
+                    <!-- Cheese Option -->
+                    <div class="size-picker-container option-container">
+                      <h4 class="option-header">Choose your Cheesieness</h4>
+                      <div class="topping-options-container">
+                        <ul>
+                          <li><label for="none-cheese">none</label>
+                          <input id="none-cheese" id="none-cheese" checked type="radio" name="cheese" value="0"></li>
+                          <li><label for="reg-cheese">Regular</label>
+                          <input id="reg-cheese" type="radio" name="cheese" value="1"></li>
+                          <li><label for="x-cheese">Pile it on</label>
+                          <input id="x-cheese" type="radio" name="cheese" value="2"></li>
+                        </ul>
+                      </div>
+
+                      <div class="next-button">
+                        <button type="button" name="next-button">Next</button>
+                      </div>
+
+                    </div>
+
+                    <!-- Meat Option -->
+                    <div class="size-picker-container option-container">
+                      <h4 class="option-header">Choose your Meat(s)</h4>
+                      <div class="topping-options-container">
+                        <ul>
+                          <li><label for="none-meat">none</label>
+                          <input onClick="noMeat()" id="none-meat" type="checkbox" name="topping-meat-none" ></li>
+                          <li><label for="pepperoni">pepperoni</label>
+                          <input class="topping-meat" id="pepperoni" checked type="checkbox" name="topping-meat" ></li>
+                          <li><label for="italian-sausage">Italian Sausage</label>
+                          <input class="topping-meat" id="italian-sausage" checked type="checkbox" name="topping-meat" ></li>
+                          <li><label for="meatball">Meatball</label>
+                          <input class="topping-meat" id="meatball" type="checkbox" name="topping-meat" ></li>
+                          <li><label for="ham">Ham</label>
+                          <input class="topping-meat" id="ham" type="checkbox" name="topping-meat" ></li>
+                          <li><label for="bacon">Bacon</label>
+                          <input class="topping-meat" id="bacon" type="checkbox" name="topping-meat" ></li>
+                          <li><label for="grilled-chicken">Grilled Chicken</label>
+                          <input class="topping-meat" id="grilled-chicken" type="checkbox" name="topping-meat" ></li>
+                          <li><label for="beef">Beef</label>
+                          <input class="topping-meat" id="beef" type="checkbox" name="topping-meat" ></li>
+                          <li><label for="pork">Pork</label>
+                          <input class="topping-meat" id="pork" type="checkbox" name="topping-meat" ></li>
+                        </ul>
+                      </div>
+
+                      <div class="next-button">
+                        <button type="button" name="next-button">Next</button>
+                      </div>
+
+                    </div>
+
+                    <!-- Veggie Option -->
+                    <div class="size-picker-container option-container">
+                      <h4 class="option-header">Choose your Veggie(s)</h4>
+                      <div class="topping-options-container">
+                        <ul>
+                          <li><label for="none-veg">none</label>
+                          <input id="none-veg" checked type="checkbox" name="topping-veg" value=".50"></li>
+                          <li><label for="mushrooms">Mushrooms</label>
+                          <input id="mushrooms" type="checkbox" name="topping-veg" value=".50"></li>
+                          <li><label for="roasted-spinach">Roasted Spinach</label>
+                          <input id="roasted-spinach" type="checkbox" name="topping-veg" value=".50"></li>
+                          <li><label for="red-onion">Red Onion</label>
+                          <input id="red-onion" type="checkbox" name="topping-veg" value=".50"></li>
+                          <li><label for="black-olives">Black Olives</label>
+                          <input id="black-olives" type="checkbox" name="topping-veg" value=".50"></li>
+                          <li><label for="green-bell-peppers">Green Bell Peppers</label>
+                          <input id="green-bell-peppers" type="checkbox" name="topping-veg" value=".50"></li>
+                          <li><label for="banana-peppers">Banana Peppers</label>
+                          <input id="banana-peppers" type="checkbox" name="topping-veg" value=".50"></li>
+                          <li><label for="pineapple">Pineapple</label>
+                          <input id="pineapple" type="checkbox" name="topping-veg" value=".50"></li>
+                          <li><label for="jalapeno-peppers">Jalapeno Peppers</label>
+                          <input id="jalapeno-peppers" type="checkbox" name="topping-veg" value=".50"></li>
+                          <li><label for="roma-tomatoes">Roma Tomatoes</label>
+                          <input id="roma-tomatoes" type="checkbox" name="topping-veg" value=".50"></li>
+                        </ul>
+                      </div>
+
+                      <div class="next-button">
+                        <button type="submit" name="submit-button">Pizza time</button>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </form>
+
+                <div class="show-pizza-container">
+                  <p><span id="showPizza"></span></p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </body>
+</html>
