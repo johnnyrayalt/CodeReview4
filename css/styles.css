@@ -1,0 +1,8 @@
+.topping-options-container ul li {
+  display: inline-block;
+  padding: 5px;
+}
+
+.next-button {
+  padding-bottom: 10px;
+}
