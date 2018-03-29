@@ -7,6 +7,8 @@ function Pizza(pizzaSize, sauceOption, cheeseOption, meatOptions, vegOptions) {
   this.total = 0;
 }
 
+
+// change values here only
 const Prices = {
   "small":10,
   "medium":12,
@@ -35,14 +37,18 @@ Pizza.prototype.addOptions = function() {
 };
 
 function sizeMath() {
+  // if pizza size dropdown is seleceted to small
   if (document.getElementById('small').selected) {
-    return Prices.small;
+    return Prices.small; //returns small pizza price from the const Price list above
+  // if pizza size dropdown is seleceted to medium
   } else if (document.getElementById('medium').selected) {
-    return Prices.medium;
+    return Prices.medium; //returns medium pizza price from the const Price list above
+  // if pizza size dropdown is seleceted to large
   } else if (document.getElementById('large').selected) {
-    return Prices.large;
+    return Prices.large; //returns large pizza price from the const Price list above
+    // if pizza size dropdown is seleceted to large
   } else if (document.getElementById('extraLarge').selected) {
-    return Prices.extraLarge;
+    return Prices.extraLarge; //returns extraLarge pizza price from the const Price list above
   }
 };
 
@@ -72,11 +78,14 @@ $(document).ready(function() {
   $('#form').submit(function(event) {
     event.preventDefault();
 
+    // Creates variables to be passed into Pizza object
     var pizzaSize = parseInt(sizeMath());
     var sauceOption = parseInt(sauceMath());
     var cheeseOption = parseInt(cheeseMath());
     var meatOptions = [];
     var vegOptions = [];
+
+    // Loops through the meat/veg checkboxes and adds each checked box into an array
     $('input:checkbox[name=topping-meat]:checked').each(function() {
       meatOptions.push($(this).val());
     });
@@ -84,10 +93,8 @@ $(document).ready(function() {
       vegOptions.push($(this).val());
     });
 
-
+    // Creates new Object names Pizza and is stored as newPizza
     var newPizza = new Pizza(pizzaSize, sauceOption, cheeseOption, meatOptions, vegOptions);
-    //console.log(newPizza.cheeseOption);
-
 
     console.log(newPizza.addOptions());
     // $('#showPizza').text(newPizza.addOptions());
